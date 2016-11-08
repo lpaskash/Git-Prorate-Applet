@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US" box-sizing: border-box;>
+<head>
+<title>Lucas Paskash Online Portfolio Main Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</meta>
+<style>
+    hmtl {
+        font-family: sans-serif;
+    }
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .wrapper {
+        width: 100%;
+        height: auto;
+        margin: 0px;
+        padding: 0 auto;
+        padding-left: 18px;
+        border: 30px solid #fff;
+        font-family: Orator Std, Arial, sans-serif;
+        box-sizing: inherit;
+        position: center;
+    }
+</style>
+</head>
+
+<body>
+</body>
+<div class= "wrapper">
+    
+    <h3>Today's date:<p id="today"></p><h3>
+    <h4> The Day is:<p id="day"></p><h4>
+
+
+<p>Basic Membership Prorate:<div id="prorate"></div></p>
+</div>
+
+<script>
+var now = new Date();
+var start = new Date(now.getFullYear(), 0, 245);
+var diff = now - start;
+var oneDay = 1000 * 60 * 60 * 24;
+var day = Math.floor(diff / oneDay);
+var price = 362 - ( .991780822 * day ).toFixed(2);
+
+document.getElementById("prorate").innerHTML = /*"Today's Price is: $" + */price;
+</script>
+
+</html>
