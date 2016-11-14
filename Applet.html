@@ -14,41 +14,150 @@
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
+        background-color: darkblue;
     }
     .wrapper {
-        width: 100%;
-        height: auto;
-        margin: 0px;
-        padding: 0 auto;
-        padding-left: 18px;
-        border: 30px solid #fff;
+        width: 100% auto;
+        height: 100% auto;
+        margin: 20px;
+        padding: 0px auto;
+        border: 0px solid #fff;
         font-family: Orator Std, Arial, sans-serif;
         box-sizing: inherit;
         position: center;
     }
+    .header {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        background-color: #fff;
+    }
+    .header > h2 {
+        color: darkblue;
+    }
+    .header > h3 {
+        color: darkred;
+        padding: 2%;
+    }
+    .date-day {
+        padding: 1%;
+        text-align: center;
+        border: 2px solid black;
+        background-color: #fff;
+    }
+    .prorate {
+        height: 100% auto;
+    }
+    table {
+        height: 100%;
+        width: 100%;
+        float: left;
+        clear: left;
+        background-color: #fff;
+    }
+    table, th, td {
+        padding: 2%;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #price-prorate {
+        text-align: center;
+    }
 </style>
 </head>
-
 <body>
-</body>
-<div class= "wrapper">
-    
+<div class="wrapper">
+    <div class="header">
+    <h2>2016-2017 Campus Recreation Basic</h2>
+    <h3>(Starts September 1, 2016)</h3>
+    </div>
+    <div class="date-day">
     <h3>Today's date:<p id="today"></p><h3>
-    <h4> The Day is:<p id="day"></p><h4>
+    <h4>The Day is:<p id="day"></p><h4>
+    </div>
 
-
-<p>Basic Membership Prorate:<div id="prorate"></div></p>
+    <div class="prorate">
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Annual Fee</th>
+                <th>Prorated Fee as of Today</th>
+            </tr>
+            <tr>
+                <td>Student</td>
+                <td id="price-prorate">$362</td>
+                <td id="price-prorate"><div id="student"></div></td>
+            </tr>
+            <tr>
+                <td>University Faculty / Staff</td>
+                <td id="price-prorate">$464</td>
+                <td id="price-prorate"><div id="facultyStaff"</td>
+            </tr>
+            <tr>
+                <td>Charter Faculty / Staff</td>
+                <td id="price-prorate">$410</td>
+                <td id="price-prorate"><div id="charter"></div></td>
+            </tr>
+            <tr>
+                <td>Hospital Staff</td>
+                <td id="price-prorate">$464</td>
+                <td id="price-prorate"><div id="hospital"></div></td>
+            </tr>
+            <tr>
+                <td>Alumni</td>
+                <td id="price-prorate">$660</td>
+                <td id="price-prorate"><div id="alumni"</td>
+            </tr>
+            <tr>
+                <td>Alumni Early Bird</td>
+                <td id="price-prorate">$362</td>
+                <td id="price-prorate"><div id="alumniEarly"></div></td>
+            </tr>
+            <tr>
+                <td>Affiliate</td>
+                <td id="price-prorate">$750</td>
+                <td id="price-prorate"><div id="affiliate"></div></td>
+            </tr>
+            <tr>
+                <td>Spouse / Dependent</td>
+                <td id="price-prorate">$356</td>
+                <td id="price-prorate"><div id="spouse"></div></td>
+            </tr>
+            <tr>
+                <td>Student Spouse / Dependent</td>
+                <td id="price-prorate">$307</td>
+                <td id="price-prorate"><div id="studentSpouse"></div></td>
+            </tr>
+        </table>
+        </div>
 </div>
-
 <script>
+/* 244 days from 1-1-16 till 9-1-16 */
 var now = new Date();
-var start = new Date(now.getFullYear(), 0, 245);
+var start = new Date(now.getFullYear(), 0, 245); 
 var diff = now - start;
 var oneDay = 1000 * 60 * 60 * 24;
 var day = Math.floor(diff / oneDay);
-var price = 362 - ( .991780822 * day ).toFixed(2);
+var studentPrice = 362 - ( .991780822 * day );
+var facultyStaffPrice = 464 - (1.271232877 * day);
+var charterPrice = 410 - (1.123287671 * day);
+var hospitalPrice = 464 - (1.271232877 * day);
+var alumniPrice = 660 - (1.808219178 * day);
+var alumniEarlyPrice = 362 - (0.991780822 * day);
+var affiliatePrice = 750 - (2.054794521 * day);
+var spousePrice = 356 - (0.9753424466 * day);
+var studentSpousePrice = 307 - (0.84109589 * day);
 
-document.getElementById("prorate").innerHTML = /*"Today's Price is: $" + */price;
+/* .toFixed(2) sets price to rounded two decimal places */
+document.getElementById("student").innerHTML = "$" + studentPrice.toFixed(2);
+document.getElementById("facultyStaff").innerHTML = "$" + facultyStaffPrice.toFixed(2);
+document.getElementById("charter").innerHTML = "$" + charterPrice.toFixed(2);
+document.getElementById("hospital").innerHTML = "$" + hospitalPrice.toFixed(2);
+document.getElementById("alumni").innerHTML = "$" + alumniPrice.toFixed(2);
+document.getElementById("alumniEarly").innerHTML = "$" + alumniEarlyPrice.toFixed(2);
+document.getElementById("affiliate").innerHTML = "$" + affiliatePrice.toFixed(2);
+document.getElementById("spouse").innerHTML = "$" + spousePrice.toFixed(2);
+document.getElementById("studentSpouse").innerHTML = "$" + studentSpousePrice.toFixed(2);
 </script>
-
+</body>
 </html>
